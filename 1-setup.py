@@ -6,7 +6,7 @@ readme_path = Path(__file__).with_name("README.md")
 long_description = readme_path.read_text(encoding="utf-8") if readme_path.exists() else ""
 
 setup(
-    name="purchase_order_cl",
+    name="purchase-order-cl",
     version="0.0.1",
     description="Orden de Compra adaptada al sistema tributario chileno para Frappe/ERPNext",
     long_description=long_description,
