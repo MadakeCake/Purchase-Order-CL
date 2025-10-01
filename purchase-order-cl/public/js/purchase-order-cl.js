@@ -11,7 +11,7 @@ frappe.ui.form.on('Purchase Order CL', {
     cargos_total: function(frm) { frm.trigger('recalculate_totals'); },
     recalculate_totals: function(frm) {
         frappe.call({
-            method: "purchase_order_cl.purchase_order_cl.doctype.purchase_order_cl.purchase_order_cl.calculate_totals",
+            method: "purchase-order-cl.purchase-order-cl.doctype.purchase-order-cl.purchase-order_cl.calculate_totals",
             doc: frm.doc,
             freeze: true
         }).then(()=> frm.refresh());
