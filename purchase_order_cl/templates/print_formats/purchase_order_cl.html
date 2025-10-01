@@ -1,102 +1,44 @@
+<div class="purchase-order-cl">
+    <h2>Orden de Compra</h2>
+    <p><strong>N°: </strong> {{ doc.name }}</p>
+    <p><strong>Proveedor: </strong> {{ doc.supplier_name }} ({{ doc.rut_proveedor }})</p>
+    <p><strong>Fecha: </strong> {{ doc.posting_date }}</p>
+    <p><strong>Empresa: </strong> {{ doc.company }}</p>
 
-<style>
-    .doc-header {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    .doc-header h2 {
-        font-size: 20px;
-        margin: 0;
-    }
-    .doc-meta {
-        margin-bottom: 15px;
-    }
-    .doc-meta td {
-        padding: 4px 8px;
-    }
-    .items-table th, .items-table td {
-        border: 1px solid #000;
-        padding: 6px;
-        font-size: 12px;
-    }
-    .items-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
-    .totals td {
-        padding: 5px;
-    }
-</style>
-
-<div class="doc-header">
-    <h2>ORDEN DE COMPRA</h2>
-</div>
-
-<table class="doc-meta">
-    <tr>
-        <td><b>No. Orden:</b></td>
-        <td>{{ doc.name }}</td> <!-- OC-0001-2025 -->
-        <td><b>Fecha:</b></td>
-        <td>{{ doc.posting_date }}</td>
-    </tr>
-    <tr>
-        <td><b>Proveedor:</b></td>
-        <td>{{ doc.supplier }}</td>
-        <td><b>RUT:</b></td>
-        <td>{{ doc.rut_proveedor }}</td>
-    </tr>
-</table>
-
-<h4>Detalle de Ítems</h4>
-<table class="items-table">
-    <thead>
-        <tr>
-            <th>Código</th>
-            <th>Descripción</th>
-            <th>Cantidad</th>
-            <th>Precio Unitario</th>
-            <th>Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for item in doc.items %}
-        <tr>
-            <td>{{ item.item_code }}</td>
-            <td>{{ item.description }}</td>
-            <td style="text-align:right;">{{ item.qty }}</td>
-            <td style="text-align:right;">{{ item.rate }}</td>
-            <td style="text-align:right;">{{ item.amount }}</td>
-        </tr>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>UOM</th>
+                <th>Precio Unitario</th>
+                <th>Descuento</th>
+                <th>Neto</th>
+                <th>IVA</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in doc.items %}
+            <tr>
+                <td>{{ row.item_code }}</td>
+                <td>{{ row.description }}</td>
+                <td>{{ row.qty }}</td>
+                <td>{{ row.stock_uom }}</td>
+                <td>{{ row.rate }}</td>
+                <td>{{ row.discount_amount }}</td>
+                <td>{{ row.amount }}</td>
+                <td>{{ row.iva_linea }}</td>
+                <td>{{ row.total_linea }}</td>
+            </tr>
         {% endfor %}
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-<table class="totals" style="width: 100%; margin-top: 20px;">
-    <tr>
-        <td style="text-align:right; width: 80%;"><b>Subtotal Neto:</b></td>
-        <td style="text-align:right;">{{ doc.subtotal_neto }}</td>
-    </tr>
-    <tr>
-        <td style="text-align:right;"><b>Descuento:</b></td>
-        <td style="text-align:right;">{{ doc.descuento_total }}</td>
-    </tr>
-    <tr>
-        <td style="text-align:right;"><b>Cargos:</b></td>
-        <td style="text-align:right;">{{ doc.cargos_total }}</td>
-    </tr>
-    <tr>
-        <td style="text-align:right;"><b>IVA ({{ doc.porc_iva }}%):</b></td>
-        <td style="text-align:right;">{{ doc.monto_iva }}</td>
-    </tr>
-    <tr>
-        <td style="text-align:right; font-size:14px;"><b>Total:</b></td>
-        <td style="text-align:right; font-size:14px;"><b>{{ doc.total }}</b></td>
-    </tr>
-</table>
-
-{% if doc.observaciones %}
-<div style="margin-top: 20px;">
-    <b>Observaciones:</b><br>
-    {{ doc.observaciones }}
+    <p><strong>Subtotal Neto:</strong> {{ doc.subtotal_neto }}</p>
+    <p><strong>Descuentos:</strong> {{ doc.discount_total }}</p>
+    <p><strong>Cargos:</strong> {{ doc.charges_total }}</p>
+    <p><strong>IVA:</strong> {{ doc.taxes_total }}</p>
+    <p><strong>Total:</strong> {{ doc.grand_total }}</p>
 </div>
