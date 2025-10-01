@@ -1,4 +1,4 @@
 include MANIFEST.in
 include requirements.txt
-recursive-include purchase_order_cl *.json *.py *.js *.html *.css *.txt
+recursive-include purchase-order-cl *.json *.py *.js *.html *.css *.txt
 recursive-exclude * __pycache__ *.pyc
