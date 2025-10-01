@@ -4,91 +4,23 @@
   "module": "Purchase Order Cl",
   "autoname": "naming_series:",
   "naming_rule": "By Series",
+  "istable": 0,
   "fields": [
-    {
-      "fieldname": "naming_series",
-      "fieldtype": "Select",
-      "label": "Series",
-      "options": "OC-.####.-YYYY",
-      "default": "OC-.####.-YYYY",
-      "hidden": 1
-    },
-    {
-      "fieldname": "supplier",
-      "label": "Supplier",
-      "fieldtype": "Link",
-      "options": "Supplier",
-      "reqd": 1
-    },
-    {
-      "fieldname": "rut_proveedor",
-      "label": "RUT Proveedor",
-      "fieldtype": "Data"
-    },
-    {
-      "fieldname": "posting_date",
-      "label": "Posting Date",
-      "fieldtype": "Date",
-      "reqd": 1,
-      "default": "Today"
-    },
-    {
-      "fieldname": "items",
-      "label": "Items",
-      "fieldtype": "Table",
-      "options": "Purchase Order CL Item",
-      "reqd": 1
-    },
-    {
-      "fieldname": "subtotal_neto",
-      "label": "Subtotal Neto",
-      "fieldtype": "Currency",
-      "read_only": 1
-    },
-    {
-      "fieldname": "descuento_total",
-      "label": "Descuento Total",
-      "fieldtype": "Currency",
-      "default": 0
-    },
-    {
-      "fieldname": "cargos_total",
-      "label": "Cargos Total",
-      "fieldtype": "Currency",
-      "default": 0
-    },
-    {
-      "fieldname": "porc_iva",
-      "label": "Porcentaje IVA",
-      "fieldtype": "Percent",
-      "default": 19
-    },
-    {
-      "fieldname": "monto_iva",
-      "label": "IVA",
-      "fieldtype": "Currency",
-      "read_only": 1
-    },
-    {
-      "fieldname": "total",
-      "label": "Total",
-      "fieldtype": "Currency",
-      "read_only": 1
-    },
-    {
-      "fieldname": "observaciones",
-      "label": "Observaciones",
-      "fieldtype": "Text"
-    }
+    {"fieldname":"naming_series","fieldtype":"Select","label":"Series","options":"OC-.####.-YYYY","default":"OC-.####.-YYYY","hidden":1},
+    {"fieldname":"supplier","label":"Supplier","fieldtype":"Link","options":"Supplier","reqd":1},
+    {"fieldname":"supplier_name","label":"Supplier Name","fieldtype":"Data"},
+    {"fieldname":"rut_proveedor","label":"RUT Proveedor","fieldtype":"Data"},
+    {"fieldname":"posting_date","label":"Posting Date","fieldtype":"Date","reqd":1,"default":"Today"},
+    {"fieldname":"company","label":"Company","fieldtype":"Link","options":"Company","reqd":1},
+    {"fieldname":"items","label":"Items","fieldtype":"Table","options":"Purchase Order CL Item","reqd":1},
+    {"fieldname":"currency","label":"Currency","fieldtype":"Link","options":"Currency","default":"CLP"},
+    {"fieldname":"subtotal_neto","label":"Subtotal Neto","fieldtype":"Currency","read_only":1},
+    {"fieldname":"discount_total","label":"Descuento Total","fieldtype":"Currency","default":0},
+    {"fieldname":"charges_total","label":"Cargos Total","fieldtype":"Currency","default":0},
+    {"fieldname":"taxes_total","label":"Taxes Total","fieldtype":"Currency","read_only":1},
+    {"fieldname":"porc_iva","label":"Porcentaje IVA","fieldtype":"Percent","default":19},
+    {"fieldname":"grand_total","label":"Total","fieldtype":"Currency","read_only":1},
+    {"fieldname":"observaciones","label":"Observaciones","fieldtype":"Text"}
   ],
-  "permissions": [
-    {
-      "role": "System Manager",
-      "read": 1,
-      "write": 1,
-      "create": 1,
-      "delete": 1
-    }
-  ]
+  "permissions":[{"role":"System Manager","read":1,"write":1,"create":1,"delete":1}]
 }
-
