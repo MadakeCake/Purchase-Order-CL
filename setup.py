@@ -13,7 +13,7 @@ setup(
     long_description_content_type="text/markdown",
     author="Tu Nombre / Empresa",
     author_email="you@example.com",
-    packages=find_packages(include=["purchase-order-cl", "purchase-order-cl.*"]),
+    packages=find_packages(include=["purchase_order_cl", "purchase_order_cl.*"]),
     include_package_data=True,
     install_requires=["frappe"],
     zip_safe=False,
